@@ -16,7 +16,7 @@ namespace SpielDesLebens
         {
             InitializeComponent();
 
-            MessageBox.Show("Test");
+            MessageBox.Show("Herr Menne sagt: Hallo!");
         }
 
     }
