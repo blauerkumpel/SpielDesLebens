@@ -15,6 +15,8 @@ namespace SpielDesLebens
         public Form1()
         {
             InitializeComponent();
+
+            MessageBox.Show("Test");
         }
 
     }
