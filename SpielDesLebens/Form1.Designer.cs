@@ -1,7 +1,7 @@
 ﻿
 namespace SpielDesLebens
 {
-    partial class Form1
+    partial class SpielDesLebens
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,12 +30,46 @@ namespace SpielDesLebens
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.pnl_canvas = new System.Windows.Forms.Panel();
+            this.lbl_schritt = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
+            // 
+            // pnl_canvas
+            // 
+            this.pnl_canvas.Location = new System.Drawing.Point(12, 12);
+            this.pnl_canvas.Name = "pnl_canvas";
+            this.pnl_canvas.Size = new System.Drawing.Size(870, 876);
+            this.pnl_canvas.TabIndex = 0;
+            // 
+            // lbl_schritt
+            // 
+            this.lbl_schritt.AutoSize = true;
+            this.lbl_schritt.Location = new System.Drawing.Point(12, 891);
+            this.lbl_schritt.Name = "lbl_schritt";
+            this.lbl_schritt.Size = new System.Drawing.Size(50, 15);
+            this.lbl_schritt.TabIndex = 0;
+            this.lbl_schritt.Text = "Schritte:";
+            // 
+            // SpielDesLebens
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(894, 915);
+            this.Controls.Add(this.lbl_schritt);
+            this.Controls.Add(this.pnl_canvas);
+            this.Name = "SpielDesLebens";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnl_canvas;
+        private System.Windows.Forms.Label lbl_schritt;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
