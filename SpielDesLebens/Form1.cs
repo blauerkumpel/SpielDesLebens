@@ -20,7 +20,6 @@ namespace SpielDesLebens
         Pen black = new Pen(Brushes.Black);
         int[,] steine;
         int vx = 51; int vy = 51;
-        int richtung = 1;
         int schritt = 0;
 
         public SpielDesLebens()
@@ -71,7 +70,7 @@ namespace SpielDesLebens
 
         private void pnl_canvas_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawImageUnscaled(theBitmap, new Point(0, 0));
+            //unter pnl_canvas_Paint_1 zu finden
         }
 
         private void pnl_canvas_MouseClick(object sender, MouseEventArgs e)
@@ -86,73 +85,12 @@ namespace SpielDesLebens
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Ameiselauf();
+            
         }
 
-        private void Ameiselauf()
+        private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
         {
-            if (steine[vx, vy] == 1)
-            {
-                richtung = richtung + 1;
-                steine[vx, vy] = 2;
-                DrawGame();
-                if (richtung == 5)
-                {
-                    richtung = 1;
-                }
-            }
-
-            else if (steine[vx, vy] == 2)
-            {
-                richtung = richtung - 1;
-                steine[vx, vy] = 1;
-                DrawGame();
-                if (richtung == 0)
-                {
-                    richtung = 4;
-                }
-            }
-
-            if (richtung == 1)
-            {
-                vy = vy - 1;
-            }
-
-            if (richtung == 2)
-            {
-                vx = vx + 1;
-            }
-
-            if (richtung == 3)
-            {
-                vy = vy + 1;
-            }
-
-            if (richtung == 4)
-            {
-                vx = vx - 1;
-            }
-
-            if (vx == 102)
-            {
-                vx = 0;
-            }
-            else if (vx == 0)
-            {
-                vx = 101;
-            }
-
-            if (vy == 102)
-            {
-                vy = 0;
-            }
-            else if (vy == 0)
-            {
-                vy = 101;
-            }
-
+            e.Graphics.DrawImageUnscaled(theBitmap, new Point(0, 0));
         }
-
-        
     }
 }
