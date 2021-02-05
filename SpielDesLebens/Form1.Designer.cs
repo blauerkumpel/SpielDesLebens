@@ -39,14 +39,15 @@ namespace SpielDesLebens
             // 
             this.pnl_canvas.Location = new System.Drawing.Point(12, 12);
             this.pnl_canvas.Name = "pnl_canvas";
-            this.pnl_canvas.Size = new System.Drawing.Size(1035, 1033);
+            this.pnl_canvas.Size = new System.Drawing.Size(1001, 1001);
             this.pnl_canvas.TabIndex = 0;
             this.pnl_canvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_canvas_Paint_1);
+            this.pnl_canvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pnl_canvas_MouseClick);
             // 
             // lbl_schritt
             // 
             this.lbl_schritt.AutoSize = true;
-            this.lbl_schritt.Location = new System.Drawing.Point(12, 1048);
+            this.lbl_schritt.Location = new System.Drawing.Point(12, 1015);
             this.lbl_schritt.Name = "lbl_schritt";
             this.lbl_schritt.Size = new System.Drawing.Size(50, 15);
             this.lbl_schritt.TabIndex = 0;
@@ -56,7 +57,7 @@ namespace SpielDesLebens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 1071);
+            this.ClientSize = new System.Drawing.Size(1026, 1038);
             this.Controls.Add(this.lbl_schritt);
             this.Controls.Add(this.pnl_canvas);
             this.Name = "SpielDesLebens";

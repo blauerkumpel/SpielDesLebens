@@ -19,7 +19,6 @@ namespace SpielDesLebens
         SolidBrush brushRed = new SolidBrush(Color.Red);
         Pen black = new Pen(Brushes.Black);
         int[,] steine;
-        int vx = 51; int vy = 51;
         int schritt = 0;
 
         public SpielDesLebens()
@@ -56,7 +55,6 @@ namespace SpielDesLebens
                         {
                             g.FillRectangle(brushBlack, x * 10, y * 10, 10, 10);
                         }
-                        g.FillRectangle(brushRed, vx * 10, vy * 10, 10, 10);
                         g.DrawRectangle(black, x * 10, y * 10, 10, 10);
                     }
                 }
@@ -76,6 +74,15 @@ namespace SpielDesLebens
         private void pnl_canvas_MouseClick(object sender, MouseEventArgs e)
         {
             //MessageBox.Show("Mausklick auf " + e.Location);
+            int kx = 0; int ky = 0;
+            kx = e.X/10 ; ky = e.Y/10 ;
+
+            if (steine[kx, ky] == 1)
+            {
+                steine[kx, ky] = 2;
+            }
+
+            DrawGame();
         }
 
         private void AnAusRätsel_Load(object sender, EventArgs e)
@@ -85,7 +92,13 @@ namespace SpielDesLebens
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            for (int x = 0; x < 101; x++)
+            {
+                for (int y = 0; y < 101; y++)
+                {
+                    
+                }
+            }
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
