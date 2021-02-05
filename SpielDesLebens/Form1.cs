@@ -20,6 +20,7 @@ namespace SpielDesLebens
         Pen black = new Pen(Brushes.Black);
         int[,] steine;
         int schritt = 0;
+        int zähler = 0;
 
         public SpielDesLebens()
         {
@@ -90,20 +91,49 @@ namespace SpielDesLebens
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Schritt()
         {
-            for (int x = 0; x < 101; x++)
+            for (int x = 1; x < 100; x++)
             {
-                for (int y = 0; y < 101; y++)
+                for (int y = 1; y < 100; y++)
                 {
-                    
+                    if (steine[x, y - 1] == 2) { zähler++; }
+                    if (steine[x + 1, y - 1] == 2) { zähler++; }
+                    if (steine[x + 1, y] == 2) { zähler++; }
+                    if (steine[x + 1, y + 1] == 2) { zähler++; }
+                    if (steine[x, y + 1] == 2) { zähler++; }
+                    if (steine[x - 1, y + 1] == 2) { zähler++; }
+                    if (steine[x - 1, y] == 2) { zähler++; }
+                    if (steine[x - 1, y - 1] == 2) { zähler++; }
+
+                    if (zähler <= 1)
+                    {
+                        steine[x, y] = 2;
+                        DrawGame();
+                    }
+                    if (zähler > 3)
+                    {
+                        steine[x, y] = 1;
+                        DrawGame();
+                    }
+                    zähler = 0;
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImageUnscaled(theBitmap, new Point(0, 0));
+        }
+
+        private void Los_Click(object sender, EventArgs e)
+        {
+            Schritt();
         }
     }
 }

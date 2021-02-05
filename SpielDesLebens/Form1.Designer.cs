@@ -33,6 +33,7 @@ namespace SpielDesLebens
             this.pnl_canvas = new System.Windows.Forms.Panel();
             this.lbl_schritt = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Los = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnl_canvas
@@ -53,11 +54,26 @@ namespace SpielDesLebens
             this.lbl_schritt.TabIndex = 0;
             this.lbl_schritt.Text = "Schritte:";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            // 
+            // Los
+            // 
+            this.Los.Location = new System.Drawing.Point(939, 1011);
+            this.Los.Name = "Los";
+            this.Los.Size = new System.Drawing.Size(75, 23);
+            this.Los.TabIndex = 0;
+            this.Los.Text = "Los";
+            this.Los.UseVisualStyleBackColor = true;
+            this.Los.Click += new System.EventHandler(this.Los_Click);
+            // 
             // SpielDesLebens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 1038);
+            this.Controls.Add(this.Los);
             this.Controls.Add(this.lbl_schritt);
             this.Controls.Add(this.pnl_canvas);
             this.Name = "SpielDesLebens";
@@ -72,6 +88,7 @@ namespace SpielDesLebens
         private System.Windows.Forms.Panel pnl_canvas;
         private System.Windows.Forms.Label lbl_schritt;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button Los;
     }
 }
 
