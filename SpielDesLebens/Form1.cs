@@ -106,9 +106,18 @@ namespace SpielDesLebens
                     if (steine[x - 1, y] == 2) { zähler++; }
                     if (steine[x - 1, y - 1] == 2) { zähler++; }
 
-                    if (zähler <= 1)
+                    if (zähler == 2)
+                    {
+                        //nichts
+                    }
+                    if (zähler == 3)
                     {
                         steine[x, y] = 2;
+                        DrawGame();
+                    }
+                    if (zähler == 0 || zähler == 1)
+                    {
+                        steine[x, y] = 1;
                         DrawGame();
                     }
                     if (zähler > 3)
