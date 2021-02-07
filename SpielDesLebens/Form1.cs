@@ -20,7 +20,6 @@ namespace SpielDesLebens
         Pen black = new Pen(Brushes.Black);
         int[,] steine;
         int schritt = 0;
-        int zähler = 0;
         Random myRandom = new Random();
 
         public SpielDesLebens()
@@ -94,41 +93,40 @@ namespace SpielDesLebens
 
         private void Schritt()
         {
-            for (int x = 1; x < 100; x++)
+            for (int x = 0; x < 100; x++)
             {
-                for (int y = 1; y < 100; y++)
+                for (int y = 0; y < 100; y++)
                 {
-                    if (steine[x, y - 1] == 2) { zähler++; }
-                    if (steine[x + 1, y - 1] == 2) { zähler++; }
-                    if (steine[x + 1, y] == 2) { zähler++; }
-                    if (steine[x + 1, y + 1] == 2) { zähler++; }
-                    if (steine[x, y + 1] == 2) { zähler++; }
-                    if (steine[x - 1, y + 1] == 2) { zähler++; }
-                    if (steine[x - 1, y] == 2) { zähler++; }
-                    if (steine[x - 1, y - 1] == 2) { zähler++; }
+                    int links=x-1, rechts=x+1, oben=y-1, unten=y+1, zähler=0;
+                    if (links < 0)
+                        links = 99;
+                    if (rechts == 100)
+                        rechts = 0;
+                    if (oben < 0)
+                        oben = 99;
+                    if (unten == 100)
+                        unten = 0;
 
-                    if (zähler == 2)
+                    if (steine[links, y] == 1) { zähler++; }
+                    if (steine[rechts, y] == 1) { zähler++; }
+                    if (steine[x, oben]  == 1) { zähler++; }
+                    if (steine[x, unten] == 1) { zähler++; }
+                    if (steine[links, oben]  == 1) { zähler++; }
+                    if (steine[links,unten]  == 1) { zähler++; }
+                    if (steine[rechts, oben]  == 1) { zähler++; }
+                    if (steine[rechts, unten]  == 1) { zähler++; }
+
+                    if(steine[x,y]==0)
                     {
-                        //nichts
+                        // Wann werden Zellen neu erschaffen?
                     }
-                    if (zähler == 3)
+                    else
                     {
-                        steine[x, y] = 2;
-                        DrawGame();
+                        // Wann bleibt eine Zelle am Leben?
                     }
-                    if (zähler == 0 || zähler == 1)
-                    {
-                        steine[x, y] = 1;
-                        DrawGame();
-                    }
-                    if (zähler > 3)
-                    {
-                        steine[x, y] = 1;
-                        DrawGame();
-                    }
-                    zähler = 0;
                 }
             }
+            DrawGame();
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
