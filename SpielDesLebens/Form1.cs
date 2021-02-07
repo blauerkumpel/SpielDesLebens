@@ -49,11 +49,11 @@ namespace SpielDesLebens
                 {
                     for (int y = 0; y < 101; y++)
                     {
-                        if (steine[x, y] == 1)
+                        if (steine[x, y] == 0)
                         {
                             g.FillRectangle(brushWhite, x * 10, y * 10, 10, 10);
                         }
-                        if (steine[x, y] == 2)
+                        if (steine[x, y] == 1)
                         {
                             g.FillRectangle(brushBlack, x * 10, y * 10, 10, 10);
                         }
