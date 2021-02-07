@@ -21,6 +21,7 @@ namespace SpielDesLebens
         int[,] steine;
         int schritt = 0;
         int zähler = 0;
+        Random myRandom = new Random();
 
         public SpielDesLebens()
         {
@@ -32,7 +33,7 @@ namespace SpielDesLebens
             {
                 for (int y = 0; y < 101; y++)
                 {
-                    steine[x, y] = 1;
+                    steine[x, y] = myRandom.Next(0,2);
                 }
             }
 
@@ -128,11 +129,6 @@ namespace SpielDesLebens
                     zähler = 0;
                 }
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
