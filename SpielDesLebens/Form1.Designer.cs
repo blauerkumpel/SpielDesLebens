@@ -56,7 +56,7 @@ namespace SpielDesLebens
             // 
             // timer1
             // 
-            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // Los
             // 

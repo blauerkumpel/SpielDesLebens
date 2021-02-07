@@ -142,6 +142,11 @@ namespace SpielDesLebens
 
         private void Los_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = true;
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
             Schritt();
         }
     }
