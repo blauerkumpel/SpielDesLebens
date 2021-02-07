@@ -93,6 +93,11 @@ namespace SpielDesLebens
 
         private void Schritt()
         {
+            // WICHTIG: Ich hatte euch die Array.Clone()-Funktion gezeigt. Ohne die funktioniert euer Programm nicht, denn:
+            // Nehmen wir an, die erste Zelle, die wir anschauen, würde im nächsten Schritt sterben. Wenn wir diese jetzt
+            // schon sterben lassen, und uns die Zelle daneben anschauen, hat diese keine Nachbarn mehr. Allerdings
+            // wäre die Zelle erst im nächsten Schritt tot, und nicht schon in diesem.
+
             for (int x = 0; x < 100; x++)
             {
                 for (int y = 0; y < 100; y++)
