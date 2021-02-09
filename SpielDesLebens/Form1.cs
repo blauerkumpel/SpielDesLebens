@@ -97,6 +97,8 @@ namespace SpielDesLebens
             // schon sterben lassen, und uns die Zelle daneben anschauen, hat diese keine Nachbarn mehr. Allerdings
             // wäre die Zelle erst im nächsten Schritt tot, und nicht schon in diesem.
 
+            //int[] steine2 = (int[])steine.Clone();  --> Wohin?
+
             for (int x = 0; x < 100; x++)
             {
                 for (int y = 0; y < 100; y++)
@@ -126,17 +128,19 @@ namespace SpielDesLebens
                     }
                     else
                     {
-                        // Wann bleibt eine Zelle am Leben?
+                        steine[x, y] = 1;
+                        DrawGame();
                     }
-<<<<<<< HEAD
                     zähler = 0;
                     schritt++;
                     lbl_schritt.Text = "Schritte: " + schritt;
-=======
->>>>>>> 95a7f5dafc1a4c5e0abdb45cfe8e0293791d8674
                 }
             }
-            DrawGame();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
