@@ -20,7 +20,7 @@ namespace SpielDesLebens
         Pen black = new Pen(Brushes.Black);
         int[,] steine;
         int schritt = 0;
-        int zähler = 0;
+        Random myRandom = new Random();
 
         public SpielDesLebens()
         {
@@ -32,7 +32,7 @@ namespace SpielDesLebens
             {
                 for (int y = 0; y < 101; y++)
                 {
-                    steine[x, y] = 1;
+                    steine[x, y] = myRandom.Next(0,2);
                 }
             }
 
@@ -48,11 +48,11 @@ namespace SpielDesLebens
                 {
                     for (int y = 0; y < 101; y++)
                     {
-                        if (steine[x, y] == 1)
+                        if (steine[x, y] == 0)
                         {
                             g.FillRectangle(brushWhite, x * 10, y * 10, 10, 10);
                         }
-                        if (steine[x, y] == 2)
+                        if (steine[x, y] == 1)
                         {
                             g.FillRectangle(brushBlack, x * 10, y * 10, 10, 10);
                         }
@@ -92,48 +92,51 @@ namespace SpielDesLebens
 
         private void Schritt()
         {
-            for (int x = 1; x < 100; x++)
-            {
-                for (int y = 1; y < 100; y++)
-                {
-                    if (steine[x, y - 1] == 2) { zähler++; }
-                    if (steine[x + 1, y - 1] == 2) { zähler++; }
-                    if (steine[x + 1, y] == 2) { zähler++; }
-                    if (steine[x + 1, y + 1] == 2) { zähler++; }
-                    if (steine[x, y + 1] == 2) { zähler++; }
-                    if (steine[x - 1, y + 1] == 2) { zähler++; }
-                    if (steine[x - 1, y] == 2) { zähler++; }
-                    if (steine[x - 1, y - 1] == 2) { zähler++; }
+            // WICHTIG: Ich hatte euch die Array.Clone()-Funktion gezeigt. Ohne die funktioniert euer Programm nicht, denn:
+            // Nehmen wir an, die erste Zelle, die wir anschauen, würde im nächsten Schritt sterben. Wenn wir diese jetzt
+            // schon sterben lassen, und uns die Zelle daneben anschauen, hat diese keine Nachbarn mehr. Allerdings
+            // wäre die Zelle erst im nächsten Schritt tot, und nicht schon in diesem.
 
-                    if (zähler == 2)
+            for (int x = 0; x < 100; x++)
+            {
+                for (int y = 0; y < 100; y++)
+                {
+                    int links=x-1, rechts=x+1, oben=y-1, unten=y+1, zähler=0;
+                    if (links < 0)
+                        links = 99;
+                    if (rechts == 100)
+                        rechts = 0;
+                    if (oben < 0)
+                        oben = 99;
+                    if (unten == 100)
+                        unten = 0;
+
+                    if (steine[links, y] == 1) { zähler++; }
+                    if (steine[rechts, y] == 1) { zähler++; }
+                    if (steine[x, oben]  == 1) { zähler++; }
+                    if (steine[x, unten] == 1) { zähler++; }
+                    if (steine[links, oben]  == 1) { zähler++; }
+                    if (steine[links,unten]  == 1) { zähler++; }
+                    if (steine[rechts, oben]  == 1) { zähler++; }
+                    if (steine[rechts, unten]  == 1) { zähler++; }
+
+                    if(steine[x,y]==0)
                     {
-                        //nichts
+                        // Wann werden Zellen neu erschaffen?
                     }
-                    if (zähler == 3)
+                    else
                     {
-                        steine[x, y] = 2;
-                        DrawGame();
+                        // Wann bleibt eine Zelle am Leben?
                     }
-                    if (zähler == 0 || zähler == 1)
-                    {
-                        steine[x, y] = 1;
-                        DrawGame();
-                    }
-                    if (zähler > 3)
-                    {
-                        steine[x, y] = 1;
-                        DrawGame();
-                    }
+<<<<<<< HEAD
                     zähler = 0;
                     schritt++;
                     lbl_schritt.Text = "Schritte: " + schritt;
+=======
+>>>>>>> 95a7f5dafc1a4c5e0abdb45cfe8e0293791d8674
                 }
             }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
+            DrawGame();
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
@@ -142,6 +145,11 @@ namespace SpielDesLebens
         }
 
         private void Los_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = true;
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
         {
             Schritt();
         }
