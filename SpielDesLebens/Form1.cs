@@ -63,8 +63,7 @@ namespace SpielDesLebens
             }
             pnl_canvas.Invalidate();
 
-            schritt++;
-            lbl_schritt.Text = "Schritte: " + schritt;
+            
         }
 
         private void pnl_canvas_Paint(object sender, PaintEventArgs e)
@@ -126,6 +125,8 @@ namespace SpielDesLebens
                         DrawGame();
                     }
                     zähler = 0;
+                    schritt++;
+                    lbl_schritt.Text = "Schritte: " + schritt;
                 }
             }
         }
