@@ -48,7 +48,7 @@ namespace SpielDesLebens
             // lbl_schritt
             // 
             this.lbl_schritt.AutoSize = true;
-            this.lbl_schritt.Location = new System.Drawing.Point(12, 1015);
+            this.lbl_schritt.Location = new System.Drawing.Point(1019, 12);
             this.lbl_schritt.Name = "lbl_schritt";
             this.lbl_schritt.Size = new System.Drawing.Size(50, 15);
             this.lbl_schritt.TabIndex = 0;
@@ -56,11 +56,11 @@ namespace SpielDesLebens
             // 
             // timer1
             // 
-            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // Los
             // 
-            this.Los.Location = new System.Drawing.Point(939, 1011);
+            this.Los.Location = new System.Drawing.Point(1019, 30);
             this.Los.Name = "Los";
             this.Los.Size = new System.Drawing.Size(75, 23);
             this.Los.TabIndex = 0;
@@ -72,7 +72,7 @@ namespace SpielDesLebens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1026, 1038);
+            this.ClientSize = new System.Drawing.Size(1134, 1038);
             this.Controls.Add(this.Los);
             this.Controls.Add(this.lbl_schritt);
             this.Controls.Add(this.pnl_canvas);
