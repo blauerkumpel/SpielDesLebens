@@ -32,7 +32,7 @@ namespace SpielDesLebens
             {
                 for (int y = 0; y < 101; y++)
                 {
-                    steine[x, y] = myRandom.Next(0,2);
+                    steine[x, y] = myRandom.Next(0, 2);
                 }
             }
 
@@ -63,7 +63,7 @@ namespace SpielDesLebens
             }
             pnl_canvas.Invalidate();
 
-            
+
         }
 
         private void pnl_canvas_Paint(object sender, PaintEventArgs e)
@@ -75,7 +75,7 @@ namespace SpielDesLebens
         {
             //MessageBox.Show("Mausklick auf " + e.Location);
             int kx = 0; int ky = 0;
-            kx = e.X/10 ; ky = e.Y/10 ;
+            kx = e.X / 10; ky = e.Y / 10;
 
             if (steine[kx, ky] == 1)
             {
@@ -97,13 +97,13 @@ namespace SpielDesLebens
             // schon sterben lassen, und uns die Zelle daneben anschauen, hat diese keine Nachbarn mehr. Allerdings
             // wäre die Zelle erst im nächsten Schritt tot, und nicht schon in diesem.
 
-            //int[] steine2 = (int[])steine.Clone();  --> Wohin?
+            int[,] steine2 = (int[,])steine.Clone();  //--> Wohin?
 
             for (int x = 0; x < 100; x++)
             {
                 for (int y = 0; y < 100; y++)
                 {
-                    int links=x-1, rechts=x+1, oben=y-1, unten=y+1, zähler=0;
+                    int links = x - 1, rechts = x + 1, oben = y - 1, unten = y + 1, zähler = 0;
                     if (links < 0)
                         links = 99;
                     if (rechts == 100)
@@ -115,32 +115,29 @@ namespace SpielDesLebens
 
                     if (steine[links, y] == 1) { zähler++; }
                     if (steine[rechts, y] == 1) { zähler++; }
-                    if (steine[x, oben]  == 1) { zähler++; }
+                    if (steine[x, oben] == 1) { zähler++; }
                     if (steine[x, unten] == 1) { zähler++; }
-                    if (steine[links, oben]  == 1) { zähler++; }
-                    if (steine[links,unten]  == 1) { zähler++; }
-                    if (steine[rechts, oben]  == 1) { zähler++; }
-                    if (steine[rechts, unten]  == 1) { zähler++; }
+                    if (steine[links, oben] == 1) { zähler++; }
+                    if (steine[links, unten] == 1) { zähler++; }
+                    if (steine[rechts, oben] == 1) { zähler++; }
+                    if (steine[rechts, unten] == 1) { zähler++; }
 
-                    if(steine[x,y]==0)
+                    if (steine[x, y] == 0)
                     {
+                        // Der Rest sollte soweit funktionieren, jetzt den Herz des Programms hier noch vervollständigen
                         // Wann werden Zellen neu erschaffen?
                     }
                     else
                     {
-                        steine[x, y] = 1;
-                        DrawGame();
+                        // Wann sterben Zellen bzw. bleiben am Leben?
+                        steine2[x, y] = 0;
                     }
-                    zähler = 0;
-                    schritt++;
-                    lbl_schritt.Text = "Schritte: " + schritt;
                 }
             }
-        }
+            steine = (int[,])steine2.Clone();
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
+            schritt++;
+            lbl_schritt.Text = "Schritte: " + schritt;
         }
 
         private void pnl_canvas_Paint_1(object sender, PaintEventArgs e)
@@ -156,6 +153,7 @@ namespace SpielDesLebens
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             Schritt();
+            DrawGame();
         }
     }
 }
