@@ -97,7 +97,7 @@ namespace SpielDesLebens
             // schon sterben lassen, und uns die Zelle daneben anschauen, hat diese keine Nachbarn mehr. Allerdings
             // wäre die Zelle erst im nächsten Schritt tot, und nicht schon in diesem.
 
-            int[,] steine2 = (int[,])steine.Clone();  //--> Wohin?
+            int[,] steine2 = (int[,])steine.Clone();
 
             for (int x = 0; x < 100; x++)
             {
@@ -122,15 +122,13 @@ namespace SpielDesLebens
                     if (steine[rechts, oben] == 1) { zähler++; }
                     if (steine[rechts, unten] == 1) { zähler++; }
 
-                    if (steine[x, y] == 0)
+                    if (zähler == 0 || zähler == 1 || zähler == 4 || zähler == 5 || zähler == 6 || zähler == 7 || zähler == 8)
                     {
-                        // Der Rest sollte soweit funktionieren, jetzt den Herz des Programms hier noch vervollständigen
-                        // Wann werden Zellen neu erschaffen?
+                        steine2[x, y] = 0;
                     }
                     else
                     {
-                        // Wann sterben Zellen bzw. bleiben am Leben?
-                        steine2[x, y] = 0;
+                        steine2[x, y] = 1;
                     }
                 }
             }
