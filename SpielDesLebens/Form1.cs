@@ -27,15 +27,7 @@ namespace SpielDesLebens
             InitializeComponent();
             theBitmap = new Bitmap(pnl_canvas.Width, pnl_canvas.Height);
             steine = new int[101, 101];
-
-            for (int x = 0; x < 101; x++)
-            {
-                for (int y = 0; y < 101; y++)
-                {
-                    steine[x, y] = myRandom.Next(0, 2);
-                }
-            }
-
+            reset();
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnl_canvas, new object[] { true });
             DrawGame();
         }
@@ -152,6 +144,30 @@ namespace SpielDesLebens
         {
             Schritt();
             DrawGame();
+        }
+
+        private void reset()
+        {
+            for (int x = 0; x < 101; x++)
+            {
+                for (int y = 0; y < 101; y++)
+                {
+                    steine[x, y] = myRandom.Next(0, 2);
+                }
+            }
+            DrawGame();
+            schritt = 0;
+            lbl_schritt.Text = "Schritte: " + schritt;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            reset();
+        }
+
+        private void Stop_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = !timer1.Enabled;
         }
     }
 }

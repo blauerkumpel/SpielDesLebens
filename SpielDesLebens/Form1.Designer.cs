@@ -34,6 +34,8 @@ namespace SpielDesLebens
             this.lbl_schritt = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Los = new System.Windows.Forms.Button();
+            this.Reset = new System.Windows.Forms.Button();
+            this.Stop = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnl_canvas
@@ -56,6 +58,7 @@ namespace SpielDesLebens
             // 
             // timer1
             // 
+            this.timer1.Interval = 80;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // Los
@@ -68,11 +71,33 @@ namespace SpielDesLebens
             this.Los.UseVisualStyleBackColor = true;
             this.Los.Click += new System.EventHandler(this.Los_Click);
             // 
+            // Reset
+            // 
+            this.Reset.Location = new System.Drawing.Point(1019, 59);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(75, 23);
+            this.Reset.TabIndex = 1;
+            this.Reset.Text = "Reset";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Stop
+            // 
+            this.Stop.Location = new System.Drawing.Point(1019, 88);
+            this.Stop.Name = "Stop";
+            this.Stop.Size = new System.Drawing.Size(75, 23);
+            this.Stop.TabIndex = 2;
+            this.Stop.Text = "Start/Stop";
+            this.Stop.UseVisualStyleBackColor = true;
+            this.Stop.Click += new System.EventHandler(this.Stop_Click);
+            // 
             // SpielDesLebens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 1038);
+            this.Controls.Add(this.Stop);
+            this.Controls.Add(this.Reset);
             this.Controls.Add(this.Los);
             this.Controls.Add(this.lbl_schritt);
             this.Controls.Add(this.pnl_canvas);
@@ -89,6 +114,8 @@ namespace SpielDesLebens
         private System.Windows.Forms.Label lbl_schritt;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button Los;
+        private System.Windows.Forms.Button Reset;
+        private System.Windows.Forms.Button Stop;
     }
 }
 
