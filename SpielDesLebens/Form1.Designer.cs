@@ -36,6 +36,11 @@ namespace SpielDesLebens
             this.Los = new System.Windows.Forms.Button();
             this.Reset = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
+            this.Rdn_wrlf = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.Standard_Welt = new System.Windows.Forms.Button();
+            this.Random_Welt = new System.Windows.Forms.Button();
+            this.label_welten = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // pnl_canvas
@@ -73,7 +78,7 @@ namespace SpielDesLebens
             // 
             // Reset
             // 
-            this.Reset.Location = new System.Drawing.Point(1019, 59);
+            this.Reset.Location = new System.Drawing.Point(1019, 109);
             this.Reset.Name = "Reset";
             this.Reset.Size = new System.Drawing.Size(75, 23);
             this.Reset.TabIndex = 1;
@@ -83,7 +88,7 @@ namespace SpielDesLebens
             // 
             // Stop
             // 
-            this.Stop.Location = new System.Drawing.Point(1019, 88);
+            this.Stop.Location = new System.Drawing.Point(1019, 138);
             this.Stop.Name = "Stop";
             this.Stop.Size = new System.Drawing.Size(75, 23);
             this.Stop.TabIndex = 2;
@@ -91,11 +96,68 @@ namespace SpielDesLebens
             this.Stop.UseVisualStyleBackColor = true;
             this.Stop.Click += new System.EventHandler(this.Stop_Click);
             // 
+            // Rdn_wrlf
+            // 
+            this.Rdn_wrlf.AutoSize = true;
+            this.Rdn_wrlf.Location = new System.Drawing.Point(1019, 59);
+            this.Rdn_wrlf.Name = "Rdn_wrlf";
+            this.Rdn_wrlf.Size = new System.Drawing.Size(108, 19);
+            this.Rdn_wrlf.TabIndex = 3;
+            this.Rdn_wrlf.Text = "Random Würfel";
+            this.Rdn_wrlf.UseVisualStyleBackColor = true;
+            this.Rdn_wrlf.CheckedChanged += new System.EventHandler(this.Rdn_wrlf_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(1018, 84);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(102, 19);
+            this.radioButton1.TabIndex = 6;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Keine Random";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // Standard_Welt
+            // 
+            this.Standard_Welt.Location = new System.Drawing.Point(1019, 197);
+            this.Standard_Welt.Name = "Standard_Welt";
+            this.Standard_Welt.Size = new System.Drawing.Size(75, 23);
+            this.Standard_Welt.TabIndex = 7;
+            this.Standard_Welt.Text = "Standard-Welt";
+            this.Standard_Welt.UseVisualStyleBackColor = true;
+            this.Standard_Welt.Click += new System.EventHandler(this.Standard_Welt_Click);
+            // 
+            // Random_Welt
+            // 
+            this.Random_Welt.Location = new System.Drawing.Point(1020, 226);
+            this.Random_Welt.Name = "Random_Welt";
+            this.Random_Welt.Size = new System.Drawing.Size(75, 23);
+            this.Random_Welt.TabIndex = 8;
+            this.Random_Welt.Text = "Kopie-Welt";
+            this.Random_Welt.UseVisualStyleBackColor = true;
+            this.Random_Welt.Click += new System.EventHandler(this.Random_Welt_Click);
+            // 
+            // label_welten
+            // 
+            this.label_welten.AutoSize = true;
+            this.label_welten.Location = new System.Drawing.Point(1020, 261);
+            this.label_welten.Name = "label_welten";
+            this.label_welten.Size = new System.Drawing.Size(54, 15);
+            this.label_welten.TabIndex = 9;
+            this.label_welten.Text = "Standard";
+            // 
             // SpielDesLebens
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1134, 1038);
+            this.Controls.Add(this.label_welten);
+            this.Controls.Add(this.Random_Welt);
+            this.Controls.Add(this.Standard_Welt);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.Rdn_wrlf);
             this.Controls.Add(this.Stop);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.Los);
@@ -116,6 +178,11 @@ namespace SpielDesLebens
         private System.Windows.Forms.Button Los;
         private System.Windows.Forms.Button Reset;
         private System.Windows.Forms.Button Stop;
+        private System.Windows.Forms.RadioButton Rdn_wrlf;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Button Standard_Welt;
+        private System.Windows.Forms.Button Random_Welt;
+        private System.Windows.Forms.Label label_welten;
     }
 }
 

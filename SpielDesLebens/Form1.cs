@@ -21,6 +21,8 @@ namespace SpielDesLebens
         int[,] steine;
         int schritt = 0;
         Random myRandom = new Random();
+        int welten = 0;
+        bool randomradio = false;
 
         public SpielDesLebens()
         {
@@ -69,9 +71,9 @@ namespace SpielDesLebens
             int kx = 0; int ky = 0;
             kx = e.X / 10; ky = e.Y / 10;
 
-            if (steine[kx, ky] == 1)
+            if (steine[kx, ky] == 0)
             {
-                steine[kx, ky] = 2;
+                steine[kx, ky] = 1;
             }
 
             DrawGame();
@@ -114,14 +116,34 @@ namespace SpielDesLebens
                     if (steine[rechts, oben] == 1) { zähler++; }
                     if (steine[rechts, unten] == 1) { zähler++; }
 
-                    if (zähler == 0 || zähler == 1 || zähler == 4 || zähler == 5 || zähler == 6 || zähler == 7 || zähler == 8)
+                    switch (welten)
                     {
-                        steine2[x, y] = 0;
+                        default:
+                            
+                            break;
+                        case 0:
+                            if (zähler == 0 || zähler == 1 || zähler == 4 || zähler == 5 || zähler == 6 || zähler == 7 || zähler == 8)
+                            {
+                                steine2[x, y] = 0;
+                            }
+                            else
+                            {
+                                steine2[x, y] = 1;
+                            }
+                            break;
+                        case 1:
+                            if (zähler == 0 || zähler == 2 || zähler == 4 || zähler == 6 || zähler == 8)
+                            {
+                                steine2[x, y] = 0;
+                            }
+                            else
+                            {
+                                steine2[x, y] = 1;
+                            }
+                            break;
                     }
-                    else
-                    {
-                        steine2[x, y] = 1;
-                    }
+
+
                 }
             }
             steine = (int[,])steine2.Clone();
@@ -148,13 +170,28 @@ namespace SpielDesLebens
 
         private void reset()
         {
-            for (int x = 0; x < 101; x++)
+            if (randomradio == true)
             {
-                for (int y = 0; y < 101; y++)
+                for (int x = 0; x < 101; x++)
                 {
-                    steine[x, y] = myRandom.Next(0, 2);
+                    for (int y = 0; y < 101; y++)
+                    {
+                        steine[x, y] = 0;
+                        steine[x, y] = myRandom.Next(0, 2);
+                    }
                 }
             }
+            else
+            {
+                for (int x = 0; x < 101; x++)
+                {
+                    for (int y = 0; y < 101; y++)
+                    {
+                        steine[x, y] = 0;
+                    }
+                }
+            }
+
             DrawGame();
             schritt = 0;
             lbl_schritt.Text = "Schritte: " + schritt;
@@ -168,6 +205,24 @@ namespace SpielDesLebens
         private void Stop_Click(object sender, EventArgs e)
         {
             timer1.Enabled = !timer1.Enabled;
+        }
+
+        private void Rdn_wrlf_CheckedChanged(object sender, EventArgs e)
+        {
+            randomradio = !randomradio;
+
+        }
+
+        private void Standard_Welt_Click(object sender, EventArgs e)
+        {
+            welten = 0;
+            label_welten.Text = "Standard-Welt";
+        }
+
+        private void Random_Welt_Click(object sender, EventArgs e)
+        {
+            welten = 1;
+            label_welten.Text = "Kopie-Welt";
         }
     }
 }
