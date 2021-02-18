@@ -122,16 +122,27 @@ namespace SpielDesLebens
                             
                             break;
                         case 0:
-                            if (zähler == 0 || zähler == 1 || zähler == 4 || zähler == 5 || zähler == 6 || zähler == 7 || zähler == 8)
+                            if(steine2[x,y]==0) // Zelle tot
                             {
-                                steine2[x, y] = 0;
+                                if (zähler == 3)
+                                {
+                                    steine2[x, y] = 1;
+                                }
                             }
-                            else
+                            else // Zelle lebt
                             {
-                                steine2[x, y] = 1;
+                                if (zähler == 0 || zähler == 1 || zähler == 4 || zähler == 5 || zähler == 6 || zähler == 7 || zähler == 8)
+                                {
+                                    steine2[x, y] = 0;
+                                }
+                                else
+                                {
+                                    steine2[x, y] = 1;
+                                }
                             }
                             break;
                         case 1:
+                            // Regeln für Zelle lebt oder tot sind hier identisch.
                             if (zähler == 0 || zähler == 2 || zähler == 4 || zähler == 6 || zähler == 8)
                             {
                                 steine2[x, y] = 0;
